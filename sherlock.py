@@ -12,6 +12,8 @@ TEXT2 = """Crime is common. Logic is rare. Therefore it is upon the logic rather
 upon the crime that you should dwell.
 """
 
+TEXT3 = """Mediocrity knows nothing higher than itself; but talent instantly recognizes genius
+"""
 
 SERMON = """And seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him:
 And he opened his mouth, and taught them, saying,
@@ -134,6 +136,9 @@ def vigenere(key, text, encode=True):
 NORM_CTS = (820, 150, 280, 430, 1270, 220, 200, 610, 700, 15, 77, 400, 240, 670,
             750, 190, 10, 600, 630, 910, 280, 98, 240, 15, 200, 7)
 
+
+NORM_PCT = [8, 1, 3, 4, 13, 2, 2, 6, 7, 0, 1, 4, 2, 7, 7, 2, 0, 6, 6, 9, 3, 1, 2, 0, 2, 0]
+
 NORM_LTRS = [chr(ord('A') + x) for x in sorted(range(len(NORM_CTS)), key=lambda i: NORM_CTS[i], reverse=True)]
 
 
@@ -148,11 +153,7 @@ def overlap(ltrs):
 
 def pct(cts):
     s = sum(cts)
-    return tuple(math.floor(100 * (i/s)) for i in cts)
-
-
-NORM_PCT = pct(NORM_CTS)
-
+    return tuple(math.floor(0.5 + 100 * (i/s)) for i in cts)
 
 def dist_l1(cts):
     return sum(abs(x - y) for x, y in zip(NORM_PCT, pct(cts)))
