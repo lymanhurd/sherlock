@@ -1,6 +1,8 @@
+import importlib
 import math
 import re
 from collections import defaultdict, Counter
+
 
 # Sample plaintext
 TEXT1 = """when you have eliminated the impossible, whatever remains, however improbable,
@@ -90,10 +92,30 @@ And if ye salute your brethren only, what do ye more than others? do not even th
 Be ye therefore perfect, even as your Father which is in heaven is perfect."
 """
 
+TEXT4 = """1. Knowledge of Literature: Nil.
+2. Knowledge of Philosophy: Nil.
+3. Knowledge of Astronomy: Nil.
+4. Knowledge of Politics: Feeble.
+5. Knowledge of Botany: Variable. Well up in belladonna, opium, and poisons generally. Knows nothing of practical gardening.
+6. Knowledge of Geology: Practical but limited. Tells at a glance different soils from each other. After walks has shown me splashes upon his trousers, and told me by their colour and consistence in what part of London he had received them.
+7. Knowledge of Chemistry: Profound.
+8. Knowledge of Anatomy: Accurate but unsystematic.
+9. Knowledge of Sensational Literature: Immense. He appears to know every detail of every horror perpetrated in the century.
+10. Plays the violin well.
+11. Is an expert singlestick player, boxer, and swordsman.
+12. Has a good practical knowledge of British law.
+"""
+
+TEXT5 = """MY DEAR MR. SHERLOCK HOLMES, You really did it very well. You took me in completely.  Until after the alarm of fire, I had not a suspicion.  But then, when I found how I had betrayed myself, I began to think.  I had been warned against you months ago.  I had been told that if the King employed an agent, it would certainly be you.  And your address had been given me.  Yet, with all this, you made me reveal what you wanted to know.  Even after I became suspicious, I found it hard to think evil of such a dear, kind old clergyman.  But, you know, I have been trained as an actress myself.  Male costume is nothing new to me.  I often take advantage of the freedom which it gives.  I sent John, the coachman, to watch you, ran upstairs, got into my walking clothes, as I call them, and came down just as you departed.
+Well, I followed you to your door, and so made sure that I was really an object of interest to the celebrated Mr. Sherlock Holmes.  Then I, rather imprudently, wished you good night, and started for the Temple to see my husband.
+We both thought the best resource was flight when pursued by so formidable an antagonist; so you will find the nest empty when you call to-morrow.  As to the photograph, your client may rest in peace.  I love and am loved by a better man than he. 630 The King may do what he will without hindrance from one whom he has cruelly wronged.  I keep it only to safeguard myself, and to preserve a weapon which will always secure me from any steps which he might take in the future.  I leave a photograph which he might care to possess; and I remain, dear Mr. Sherlock Holmes, very truly yours,
+IRENE NORTON, née ADLER
+"""
+
 KW1 = "LOGIC"
 KW2 = "DEDUCTION"
 KW = "MATTHEWCHAPTERFIVE"
-
+KW3 = "THEWOMAN"
 
 # We normalize the text by removing all non-letters and making all letters uppercase
 def normalize(text):
@@ -176,6 +198,11 @@ def min_offset(text):
     return chr(ord("A") + dists.index(min(dists)))
 
 
+def offset(text, ltr):
+    ct = pct(counts(normalize(text)))
+    return dist_l1(rotate(ct, ord(ltr) - ord("A")))
+
+
 def counts(text):
     return tuple(Counter(normalize(text))[num_to_char(i)] for i in range(26))
 
@@ -193,6 +220,10 @@ def partition_with_overlap(lst, size, overlap):
 
 def most_freq_trigrams(text):
     return Counter(partition_with_overlap(normalize(text), 3, 2))
+
+
+def most_freq_bigrams(text):
+    return Counter(partition_with_overlap(normalize(text), 2, 1))
 
 
 def posns(text, substring):
