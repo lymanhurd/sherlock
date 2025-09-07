@@ -1,0 +1,3168 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[    136200,       3160]
+NotebookOptionsPosition[    133968,       3114]
+NotebookOutlinePosition[    134373,       3130]
+CellTagsIndexPosition[    134330,       3127]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"base", " ", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Circle", "[", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], "]"}], ",", " ", 
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", " ", "0.8"}], "]"}], ",", " ", 
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", " ", "0.6"}], "]"}]}], "}"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.965744567463827*^9, 3.965744632149391*^9}, {
+   3.965744677040638*^9, 3.965744702711073*^9}, {3.965744780038187*^9, 
+   3.965744793546316*^9}, 3.965747673374012*^9},
+ CellLabel->"In[61]:=",ExpressionUUID->"72b45880-54ca-bc49-b4f6-34315d4792e1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dividers", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"0.6", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Sin", "[", 
+            RowBox[{"theta", " ", "+", " ", 
+             RowBox[{"Pi", "/", "26"}]}], "]"}], ",", " ", 
+           RowBox[{"Cos", "[", 
+            RowBox[{"theta", " ", "+", " ", 
+             RowBox[{"Pi", "/", "26"}]}], "]"}]}], "}"}]}], ",", "  ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", " ", "+", " ", 
+            RowBox[{"Pi", "/", "26"}]}], "]"}], ",", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", " ", "+", " ", 
+            RowBox[{"Pi", "/", "26"}]}], "]"}]}], "}"}]}], "}"}], "]"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{"theta", ",", " ", "0", ",", " ", 
+       RowBox[{"2", " ", "Pi"}], ",", " ", 
+       RowBox[{"2", 
+        RowBox[{"Pi", " ", "/", " ", "26"}]}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9657448025534496`*^9, 3.9657450103946896`*^9}, {
+   3.965745331836439*^9, 3.9657453391724606`*^9}, {3.9657453728876286`*^9, 
+   3.965745373335449*^9}, {3.965746856479933*^9, 3.96574689986981*^9}, 
+   3.9657476757186546`*^9},
+ CellLabel->"In[62]:=",ExpressionUUID->"da9c97d4-b1dd-8d47-a54e-a855e655e638"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"alphabet", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"ToUpperCase", "[", 
+      RowBox[{"FromLetterNumber", "[", "i", "]"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", "26"}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9657461756687126`*^9, 3.9657461864880505`*^9}, {
+   3.96574630579463*^9, 3.9657463468666058`*^9}, 3.965748035968052*^9, {
+   3.965748635226301*^9, 3.965748636935522*^9}, 3.965748716818598*^9, {
+   3.965767458560751*^9, 3.965767459894129*^9}},
+ CellLabel->
+  "In[160]:=",ExpressionUUID->"2490a11d-6437-5645-9be1-3d1d2cdd8ca9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ringText", "[", 
+   RowBox[{
+   "radius_", ",", " ", "offset_", ",", " ", "fontsize_", ",", " ", "text_", ",",
+     " ", "color_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Text", "[", 
+     RowBox[{
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"text", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", " ", "+", " ", 
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{"i", "  ", "+", " ", "offset"}], ",", " ", "26"}], 
+            "]"}]}], "]"}], "]"}], ",", " ", 
+        RowBox[{"FontWeight", "->", "\"\<Bold\>\""}], ",", " ", 
+        RowBox[{"FontSize", "->", " ", "fontsize"}], ",", " ", 
+        RowBox[{"FontColor", "->", "color"}]}], "]"}], ",", " ", 
+      RowBox[{"radius", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          RowBox[{"i", " ", 
+           RowBox[{"Pi", "/", "13"}]}], "]"}], ",", " ", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"i", " ", 
+           RowBox[{"Pi", " ", "/", " ", "13"}]}], "]"}]}], "}"}]}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Cos", "[", 
+         RowBox[{"i", " ", 
+          RowBox[{"Pi", "/", "13"}]}], "]"}], ",", " ", 
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", 
+          RowBox[{"i", " ", 
+           RowBox[{"Pi", " ", "/", " ", "13"}]}], "]"}]}]}], "}"}]}], "]"}], ",",
+     " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "26"}], "}"}]}], "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.965755201350195*^9, 3.965755257438797*^9}, {
+  3.965755326573797*^9, 3.9657553276434345`*^9}, {3.96575550691905*^9, 
+  3.965755517101919*^9}, {3.9657557256960983`*^9, 3.965755728088009*^9}, {
+  3.9657558483726444`*^9, 3.9657558490504093`*^9}, {3.965755883735203*^9, 
+  3.96575590038657*^9}, {3.9657560775247173`*^9, 3.9657560835693398`*^9}, {
+  3.9657561566733074`*^9, 3.9657561570781784`*^9}, {3.965756188645565*^9, 
+  3.9657561889226093`*^9}, {3.965756277294134*^9, 3.965756281599453*^9}, {
+  3.965756388114506*^9, 3.965756393610277*^9}, {3.965756436438671*^9, 
+  3.9657565000922413`*^9}, {3.965756616425724*^9, 3.965756618206272*^9}, {
+  3.965767471737955*^9, 3.9657674846040955`*^9}},
+ CellLabel->
+  "In[162]:=",ExpressionUUID->"d7586eb7-6781-8a49-9ec1-87483b75bf5f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ring", "[", "offset_", "]"}], " ", ":=", " ", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"Join", "[", 
+    RowBox[{"base", ",", "dividers", ",", " ", 
+     RowBox[{"ringText", "[", 
+      RowBox[{
+      "0.7", ",", " ", "offset", ",", " ", "16", ",", " ", "alphabet", ",", 
+       "Black"}], "]"}], ",", " ", 
+     RowBox[{"ringText", "[", 
+      RowBox[{
+      "0.9", ",", " ", "0", ",", " ", "18", ",", " ", "alphabet", ",", 
+       "Red"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Text", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"alphabet", "[", 
+          RowBox[{"[", 
+           RowBox[{"offset", " ", "+", " ", "1"}], "]"}], "]"}], ",", " ", 
+         RowBox[{"FontSize", "->", " ", "40"}]}], "]"}], "]"}], "}"}]}], 
+    "]"}], "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.965746576464405*^9, 3.965746581330473*^9}, {
+  3.965746797129944*^9, 3.9657468202888374`*^9}, {3.9657469835547905`*^9, 
+  3.965746985081438*^9}, {3.9657478713619003`*^9, 3.965747907191414*^9}, {
+  3.9657479437210217`*^9, 3.965747962611204*^9}, {3.965755665829769*^9, 
+  3.9657556661200447`*^9}, {3.965755739267359*^9, 3.965755773557638*^9}, {
+  3.9657675111967125`*^9, 3.965767524701687*^9}, {3.9657680964057255`*^9, 
+  3.965768127815668*^9}, {3.9657681596036644`*^9, 3.965768231022106*^9}},
+ CellLabel->
+  "In[189]:=",ExpressionUUID->"f4a21f95-8124-524c-baa8-6355b2f44aad"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ring", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.965768132194027*^9, 3.9657681337387886`*^9}, {
+  3.96576824047583*^9, 3.9657682411471844`*^9}},
+ CellLabel->
+  "In[191]:=",ExpressionUUID->"0b70edd4-4183-7648-b660-f6b7d3ab837c"],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 0}], CircleBox[{0, 0}, 0.8], 
+   CircleBox[{0, 0}, 0.6], 
+   LineBox[NCache[{{0.07232200815319384, 0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, 0.5956253244588323}, {0.12053668025532306`, 
+     0.992708874098054}}]], 
+   LineBox[NCache[{{0.21276293222552137`, 0.5610097456112488}, {
+      Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}}, {{
+     0.21276293222552137`, 0.5610097456112488}, {0.3546048870425356, 
+     0.9350162426854148}}]], 
+   LineBox[NCache[{{0.34083884803869346`, 0.4937903195361938}, {
+      Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}}, {{
+     0.34083884803869346`, 0.4937903195361938}, {0.5680647467311558, 
+     0.8229838658936564}}]], 
+   LineBox[NCache[{{0.44910644890266066`, 0.3978735949444771}, {
+      Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}}, {{
+     0.44910644890266066`, 0.3978735949444771}, {0.7485107481711011, 
+     0.6631226582407952}}]], 
+   LineBox[NCache[{{0.531273615391926, 0.2788339032262611}, {
+      Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}}, {{0.531273615391926,
+      0.2788339032262611}, {0.8854560256532099, 0.46472317204376856`}}]], 
+   LineBox[NCache[{{0.5825650904556312, 0.14358939857253467`}, {
+      Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}}, {{
+     0.5825650904556312, 0.14358939857253467`}, {0.970941817426052, 
+     0.23931566428755777`}}]], LineBox[{{0.6, 0.}, {1, 0}}], 
+   LineBox[NCache[{{0.5825650904556312, -0.14358939857253467`}, {
+      Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}}, {{
+     0.5825650904556312, -0.14358939857253467`}, {
+     0.970941817426052, -0.23931566428755777`}}]], 
+   LineBox[NCache[{{0.531273615391926, -0.2788339032262611}, {
+      Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}}, {{
+     0.531273615391926, -0.2788339032262611}, {
+     0.8854560256532099, -0.46472317204376856`}}]], 
+   LineBox[NCache[{{0.44910644890266066`, -0.3978735949444771}, {
+      Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}}, {{
+     0.44910644890266066`, -0.3978735949444771}, {
+     0.7485107481711011, -0.6631226582407952}}]], 
+   LineBox[NCache[{{0.34083884803869346`, -0.4937903195361938}, {
+      Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}}, {{
+     0.34083884803869346`, -0.4937903195361938}, {
+     0.5680647467311558, -0.8229838658936564}}]], 
+   LineBox[NCache[{{0.21276293222552137`, -0.5610097456112488}, {
+      Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}}, {{
+     0.21276293222552137`, -0.5610097456112488}, {
+     0.3546048870425356, -0.9350162426854148}}]], 
+   LineBox[NCache[{{0.07232200815319384, -0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, -0.5956253244588323}, {
+     0.12053668025532306`, -0.992708874098054}}]], 
+   LineBox[NCache[{{-0.07232200815319384, -0.5956253244588323}, {-
+       Sin[Rational[1, 26] Pi], -
+       Cos[Rational[1, 26] 
+         Pi]}}, {{-0.07232200815319384, -0.5956253244588323}, \
+{-0.12053668025532306`, -0.992708874098054}}]], 
+   LineBox[NCache[{{-0.21276293222552137`, -0.5610097456112488}, {-
+       Sin[Rational[3, 26] Pi], -
+       Cos[Rational[3, 26] 
+         Pi]}}, {{-0.21276293222552137`, -0.5610097456112488}, \
+{-0.3546048870425356, -0.9350162426854148}}]], 
+   LineBox[NCache[{{-0.34083884803869346`, -0.4937903195361938}, {-
+       Sin[Rational[5, 26] Pi], -
+       Cos[Rational[5, 26] 
+         Pi]}}, {{-0.34083884803869346`, -0.4937903195361938}, \
+{-0.5680647467311558, -0.8229838658936564}}]], 
+   LineBox[NCache[{{-0.44910644890266066`, -0.3978735949444771}, {-
+       Cos[Rational[3, 13] Pi], -
+       Sin[Rational[3, 13] 
+         Pi]}}, {{-0.44910644890266066`, -0.3978735949444771}, \
+{-0.7485107481711011, -0.6631226582407952}}]], 
+   LineBox[NCache[{{-0.531273615391926, -0.2788339032262611}, {-
+       Cos[Rational[2, 13] Pi], -
+       Sin[Rational[2, 13] 
+         Pi]}}, {{-0.531273615391926, -0.2788339032262611}, \
+{-0.8854560256532099, -0.46472317204376856`}}]], 
+   LineBox[NCache[{{-0.5825650904556312, -0.14358939857253467`}, {-
+       Cos[Rational[1, 13] Pi], -
+       Sin[Rational[1, 13] 
+         Pi]}}, {{-0.5825650904556312, -0.14358939857253467`}, \
+{-0.970941817426052, -0.23931566428755777`}}]], 
+   LineBox[{{-0.6, 0.}, {-1, 0}}], 
+   LineBox[NCache[{{-0.5825650904556312, 
+      0.14358939857253467`}, {-Cos[Rational[1, 13] Pi], Sin[
+       Rational[1, 13] Pi]}}, {{-0.5825650904556312, 
+     0.14358939857253467`}, {-0.970941817426052, 0.23931566428755777`}}]], 
+   LineBox[NCache[{{-0.531273615391926, 
+      0.2788339032262611}, {-Cos[Rational[2, 13] Pi], Sin[
+       Rational[2, 13] Pi]}}, {{-0.531273615391926, 
+     0.2788339032262611}, {-0.8854560256532099, 0.46472317204376856`}}]], 
+   LineBox[NCache[{{-0.44910644890266066`, 
+      0.3978735949444771}, {-Cos[Rational[3, 13] Pi], Sin[
+       Rational[3, 13] Pi]}}, {{-0.44910644890266066`, 
+     0.3978735949444771}, {-0.7485107481711011, 0.6631226582407952}}]], 
+   LineBox[NCache[{{-0.34083884803869346`, 
+      0.4937903195361938}, {-Sin[Rational[5, 26] Pi], Cos[
+       Rational[5, 26] Pi]}}, {{-0.34083884803869346`, 
+     0.4937903195361938}, {-0.5680647467311558, 0.8229838658936564}}]], 
+   LineBox[NCache[{{-0.21276293222552137`, 
+      0.5610097456112488}, {-Sin[Rational[3, 26] Pi], Cos[
+       Rational[3, 26] Pi]}}, {{-0.21276293222552137`, 
+     0.5610097456112488}, {-0.3546048870425356, 0.9350162426854148}}]], 
+   LineBox[NCache[{{-0.07232200815319384, 
+      0.5956253244588323}, {-Sin[Rational[1, 26] Pi], Cos[
+       Rational[1, 26] Pi]}}, {{-0.07232200815319384, 
+     0.5956253244588323}, {-0.12053668025532306`, 0.992708874098054}}]], 
+   LineBox[NCache[{{0.07232200815319384, 0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, 0.5956253244588323}, {0.12053668025532306`, 
+     0.992708874098054}}]], InsetBox[
+    StyleBox["\<\"L\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.16752096500129043, 0.6796592721982364}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.32530622043063795, 0.6198192179572469}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.4641858607685566, 0.5239575237197708}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.5760887061255594, 0.397645322711809}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6545113698797903, 0.24822342092977492}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"Q\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6948962118686377, 0.08437567617872614}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["\<\"R\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6948962118686377, -0.08437567617872614}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6545113698797903, -0.24822342092977492}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"T\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.5760887061255594, -0.397645322711809}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"U\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.4641858607685566, -0.5239575237197708}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.32530622043063795, -0.6198192179572469}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.16752096500129043, -0.6796592721982364}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["\<\"X\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0., -0.7}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.16752096500129043, -0.6796592721982364}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["\<\"Z\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.32530622043063795, -0.6198192179572469}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.4641858607685566, -0.5239575237197708}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.5760887061255594, -0.397645322711809}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6545113698797903, -0.24822342092977492}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"D\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6948962118686377, -0.08437567617872614}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["\<\"E\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6948962118686377, 0.08437567617872614}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6545113698797903, 0.24822342092977492}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"G\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.5760887061255594, 0.397645322711809}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.4641858607685566, 0.5239575237197708}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.32530622043063795, 0.6198192179572469}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"J\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.16752096500129043, 0.6796592721982364}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->16,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0., 0.7}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.215384097858802, 0.8738476356834468}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.41825085483939173, 0.796910423087889}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"D\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.5968103924167157, 0.673659673353991}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"E\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.7406854793042907, 0.5112582720580402}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.8415146184168734, 0.31914439833828206},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"G\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.8934379866882486, 0.10848301222979076},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.8934379866882486, -0.10848301222979076},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.8415146184168734, -0.31914439833828206},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"J\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.7406854793042907, -0.5112582720580402},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.5968103924167157, -0.673659673353991}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"L\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.41825085483939173, -0.796910423087889},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.215384097858802, -0.8738476356834468}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0., -0.9}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.215384097858802, -0.8738476356834468},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.41825085483939173, -0.796910423087889},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["\<\"Q\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.5968103924167157, -0.673659673353991},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"R\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.7406854793042907, -0.5112582720580402},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.8415146184168734, -0.31914439833828206},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"T\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.8934379866882486, -0.10848301222979076},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["\<\"U\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.8934379866882486, 0.10848301222979076},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.8415146184168734, 0.31914439833828206},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.7406854793042907, 0.5112582720580402},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"X\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.5968103924167157, 0.673659673353991}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.41825085483939173, 0.796910423087889},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"Z\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.215384097858802, 0.8738476356834468}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->18,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0., 0.9}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->40], {0, 0}]}]], "Output",
+ CellChangeTimes->{
+  3.965768134494686*^9, {3.9657682010606995`*^9, 3.9657682417595654`*^9}},
+ CellLabel->
+  "Out[191]=",ExpressionUUID->"45534f66-e8f2-414c-add6-8e1b49163bbd"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"illustrate", "[", "offset_", "]"}], " ", ":=", " ", 
+  RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+   RowBox[{"Join", "[", "\[IndentingNewLine]", 
+    RowBox[{
+    "base", ",", "\[IndentingNewLine]", "dividers", ",", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ringText", "[", 
+      RowBox[{
+      "0.75", ",", " ", "offset", ",", " ", "12", ",", " ", "alphabet", ",", 
+       " ", "Black"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ringText", "[", 
+      RowBox[{
+      "0.65", ",", " ", "offset", ",", " ", "12", ",", " ", "codedCounts", ",",
+        " ", "DarkGreen"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ringText", "[", 
+      RowBox[{
+      "0.95", ",", " ", "0", ",", " ", "14", ",", " ", "alphabet", ",", " ", 
+       "Red"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ringText", "[", 
+      RowBox[{
+      "0.85", ",", " ", "0", ",", " ", "14", ",", " ", "stdCounts", ",", " ", 
+       "Blue"}], "]"}], ",", " ", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Text", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"alphabet", "[", 
+          RowBox[{"[", 
+           RowBox[{"offset", " ", "+", " ", "1"}], "]"}], "]"}], ",", " ", 
+         RowBox[{"FontSize", "->", " ", "40"}]}], "]"}], "]"}], "}"}]}], 
+    "]"}], "]"}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9657552741154346`*^9, 3.9657552859244385`*^9}, {
+   3.965755347535408*^9, 3.9657554051641216`*^9}, {3.9657555281488247`*^9, 
+   3.965755568241926*^9}, {3.9657559729961205`*^9, 3.9657560066387806`*^9}, {
+   3.9657562271282883`*^9, 3.96575623443021*^9}, {3.9657564098379784`*^9, 
+   3.9657564195096207`*^9}, {3.965756525487295*^9, 3.965756556178606*^9}, {
+   3.965756697912403*^9, 3.9657567001210537`*^9}, {3.965756742073759*^9, 
+   3.965756776430338*^9}, {3.965767389971876*^9, 3.965767403025791*^9}, {
+   3.9657675694820595`*^9, 3.9657675965701065`*^9}, {3.965767699047638*^9, 
+   3.9657677505512104`*^9}, {3.965767782468067*^9, 3.9657678248651295`*^9}, {
+   3.9657678750516872`*^9, 3.9657679158199177`*^9}, {3.9657679775265713`*^9, 
+   3.965768041416313*^9}, 3.9657682710117645`*^9},
+ CellLabel->
+  "In[192]:=",ExpressionUUID->"2054f860-f727-9c49-a4fc-0efaf076399b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"illustrate", "[", "0", "]"}]], "Input",
+ CellChangeTimes->{{3.965756802062599*^9, 3.965756826486637*^9}, {
+  3.965767162310299*^9, 3.965767199373356*^9}, {3.965767632964163*^9, 
+  3.9657676334718018`*^9}, {3.96576776201408*^9, 3.965767768595421*^9}},
+ CellLabel->
+  "In[193]:=",ExpressionUUID->"34463e6a-3bfd-fb40-9aea-00dc800b080d"],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 0}], CircleBox[{0, 0}, 0.8], 
+   CircleBox[{0, 0}, 0.6], 
+   LineBox[NCache[{{0.07232200815319384, 0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, 0.5956253244588323}, {0.12053668025532306`, 
+     0.992708874098054}}]], 
+   LineBox[NCache[{{0.21276293222552137`, 0.5610097456112488}, {
+      Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}}, {{
+     0.21276293222552137`, 0.5610097456112488}, {0.3546048870425356, 
+     0.9350162426854148}}]], 
+   LineBox[NCache[{{0.34083884803869346`, 0.4937903195361938}, {
+      Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}}, {{
+     0.34083884803869346`, 0.4937903195361938}, {0.5680647467311558, 
+     0.8229838658936564}}]], 
+   LineBox[NCache[{{0.44910644890266066`, 0.3978735949444771}, {
+      Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}}, {{
+     0.44910644890266066`, 0.3978735949444771}, {0.7485107481711011, 
+     0.6631226582407952}}]], 
+   LineBox[NCache[{{0.531273615391926, 0.2788339032262611}, {
+      Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}}, {{0.531273615391926,
+      0.2788339032262611}, {0.8854560256532099, 0.46472317204376856`}}]], 
+   LineBox[NCache[{{0.5825650904556312, 0.14358939857253467`}, {
+      Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}}, {{
+     0.5825650904556312, 0.14358939857253467`}, {0.970941817426052, 
+     0.23931566428755777`}}]], LineBox[{{0.6, 0.}, {1, 0}}], 
+   LineBox[NCache[{{0.5825650904556312, -0.14358939857253467`}, {
+      Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}}, {{
+     0.5825650904556312, -0.14358939857253467`}, {
+     0.970941817426052, -0.23931566428755777`}}]], 
+   LineBox[NCache[{{0.531273615391926, -0.2788339032262611}, {
+      Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}}, {{
+     0.531273615391926, -0.2788339032262611}, {
+     0.8854560256532099, -0.46472317204376856`}}]], 
+   LineBox[NCache[{{0.44910644890266066`, -0.3978735949444771}, {
+      Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}}, {{
+     0.44910644890266066`, -0.3978735949444771}, {
+     0.7485107481711011, -0.6631226582407952}}]], 
+   LineBox[NCache[{{0.34083884803869346`, -0.4937903195361938}, {
+      Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}}, {{
+     0.34083884803869346`, -0.4937903195361938}, {
+     0.5680647467311558, -0.8229838658936564}}]], 
+   LineBox[NCache[{{0.21276293222552137`, -0.5610097456112488}, {
+      Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}}, {{
+     0.21276293222552137`, -0.5610097456112488}, {
+     0.3546048870425356, -0.9350162426854148}}]], 
+   LineBox[NCache[{{0.07232200815319384, -0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, -0.5956253244588323}, {
+     0.12053668025532306`, -0.992708874098054}}]], 
+   LineBox[NCache[{{-0.07232200815319384, -0.5956253244588323}, {-
+       Sin[Rational[1, 26] Pi], -
+       Cos[Rational[1, 26] 
+         Pi]}}, {{-0.07232200815319384, -0.5956253244588323}, \
+{-0.12053668025532306`, -0.992708874098054}}]], 
+   LineBox[NCache[{{-0.21276293222552137`, -0.5610097456112488}, {-
+       Sin[Rational[3, 26] Pi], -
+       Cos[Rational[3, 26] 
+         Pi]}}, {{-0.21276293222552137`, -0.5610097456112488}, \
+{-0.3546048870425356, -0.9350162426854148}}]], 
+   LineBox[NCache[{{-0.34083884803869346`, -0.4937903195361938}, {-
+       Sin[Rational[5, 26] Pi], -
+       Cos[Rational[5, 26] 
+         Pi]}}, {{-0.34083884803869346`, -0.4937903195361938}, \
+{-0.5680647467311558, -0.8229838658936564}}]], 
+   LineBox[NCache[{{-0.44910644890266066`, -0.3978735949444771}, {-
+       Cos[Rational[3, 13] Pi], -
+       Sin[Rational[3, 13] 
+         Pi]}}, {{-0.44910644890266066`, -0.3978735949444771}, \
+{-0.7485107481711011, -0.6631226582407952}}]], 
+   LineBox[NCache[{{-0.531273615391926, -0.2788339032262611}, {-
+       Cos[Rational[2, 13] Pi], -
+       Sin[Rational[2, 13] 
+         Pi]}}, {{-0.531273615391926, -0.2788339032262611}, \
+{-0.8854560256532099, -0.46472317204376856`}}]], 
+   LineBox[NCache[{{-0.5825650904556312, -0.14358939857253467`}, {-
+       Cos[Rational[1, 13] Pi], -
+       Sin[Rational[1, 13] 
+         Pi]}}, {{-0.5825650904556312, -0.14358939857253467`}, \
+{-0.970941817426052, -0.23931566428755777`}}]], 
+   LineBox[{{-0.6, 0.}, {-1, 0}}], 
+   LineBox[NCache[{{-0.5825650904556312, 
+      0.14358939857253467`}, {-Cos[Rational[1, 13] Pi], Sin[
+       Rational[1, 13] Pi]}}, {{-0.5825650904556312, 
+     0.14358939857253467`}, {-0.970941817426052, 0.23931566428755777`}}]], 
+   LineBox[NCache[{{-0.531273615391926, 
+      0.2788339032262611}, {-Cos[Rational[2, 13] Pi], Sin[
+       Rational[2, 13] Pi]}}, {{-0.531273615391926, 
+     0.2788339032262611}, {-0.8854560256532099, 0.46472317204376856`}}]], 
+   LineBox[NCache[{{-0.44910644890266066`, 
+      0.3978735949444771}, {-Cos[Rational[3, 13] Pi], Sin[
+       Rational[3, 13] Pi]}}, {{-0.44910644890266066`, 
+     0.3978735949444771}, {-0.7485107481711011, 0.6631226582407952}}]], 
+   LineBox[NCache[{{-0.34083884803869346`, 
+      0.4937903195361938}, {-Sin[Rational[5, 26] Pi], Cos[
+       Rational[5, 26] Pi]}}, {{-0.34083884803869346`, 
+     0.4937903195361938}, {-0.5680647467311558, 0.8229838658936564}}]], 
+   LineBox[NCache[{{-0.21276293222552137`, 
+      0.5610097456112488}, {-Sin[Rational[3, 26] Pi], Cos[
+       Rational[3, 26] Pi]}}, {{-0.21276293222552137`, 
+     0.5610097456112488}, {-0.3546048870425356, 0.9350162426854148}}]], 
+   LineBox[NCache[{{-0.07232200815319384, 
+      0.5956253244588323}, {-Sin[Rational[1, 26] Pi], Cos[
+       Rational[1, 26] Pi]}}, {{-0.07232200815319384, 
+     0.5956253244588323}, {-0.12053668025532306`, 0.992708874098054}}]], 
+   LineBox[NCache[{{0.07232200815319384, 0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, 0.5956253244588323}, {0.12053668025532306`, 
+     0.992708874098054}}]], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.17948674821566832, 0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.3485423790328264, 0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"D\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.4973419936805964, 0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"E\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6172378994202423, 0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7012621820140611, 0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"G\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7445316555735405, 0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7445316555735405, -0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7012621820140611, -0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"J\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6172378994202423, -0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.4973419936805964, -0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"L\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.3485423790328264, -0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.17948674821566832, -0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0., -0.75}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.17948674821566832, -0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.3485423790328264, -0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["\<\"Q\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.4973419936805964, -0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"R\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6172378994202423, -0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7012621820140611, -0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"T\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7445316555735405, -0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["\<\"U\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7445316555735405, 0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7012621820140611, 0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6172378994202423, 0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"X\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.4973419936805964, 0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.3485423790328264, 0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"Z\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.17948674821566832, 0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0., 0.75}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.15555518178691255, 0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.3020700618284496, 0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["5",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.4310297278565169, 0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.5349395128308766, 0.36924208537525127},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6077605577455196, 0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6452607681637351, 0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6452607681637351, -0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6077605577455196, -0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.5349395128308766, -0.36924208537525127},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.4310297278565169, -0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.3020700618284496, -0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["5",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.15555518178691255, -0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0., -0.65}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.15555518178691255, -0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.3020700618284496, -0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["14",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.4310297278565169, -0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.5349395128308766, -0.36924208537525127},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6077605577455196, -0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6452607681637351, -0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6452607681637351, 0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6077605577455196, 0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.5349395128308766, 0.36924208537525127},
+     NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.4310297278565169, 0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["5",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.3020700618284496, 0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.15555518178691255, 0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0., 0.65}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.22734988107317985, 0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.4414870134415801, 0.8411832243705494}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"D\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.6299665253287554, 0.711085210762546}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"E\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.7818346725989735, 0.539661509394598}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.888265430551144, 0.33687464269040884}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"G\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.9430734303931513, 0.1145098462425569}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.9430734303931513, -0.1145098462425569},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.888265430551144, -0.33687464269040884},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"J\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.7818346725989735, -0.539661509394598}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.6299665253287554, -0.711085210762546}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"L\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.4414870134415801, -0.8411832243705494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.22734988107317985, -0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0., -0.95}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.22734988107317985, -0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.4414870134415801, -0.8411832243705494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["\<\"Q\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.6299665253287554, -0.711085210762546},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"R\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.7818346725989735, -0.539661509394598},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.888265430551144, -0.33687464269040884},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"T\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.9430734303931513, -0.1145098462425569},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["\<\"U\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.9430734303931513, 0.1145098462425569},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.888265430551144, 0.33687464269040884},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.7818346725989735, 0.539661509394598}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"X\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.6299665253287554, 0.711085210762546}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.4414870134415801, 0.8411832243705494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"Z\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.22734988107317985, 0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0., 0.95}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.2034183146444241, 0.8253005448121442}, 
+    NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.39501469623720326, 0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.5636542595046758, 0.6362341359454359}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["13",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.6995362860096079, 0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.7947638062826026, 0.3014141539861553}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.8438025429833459, 0.1024561782170246}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.8438025429833459, -0.1024561782170246},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.7947638062826026, -0.3014141539861553},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.6995362860096079, -0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.5636542595046758, -0.6362341359454359},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.39501469623720326, -0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.2034183146444241, -0.8253005448121442},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0., -0.85}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.2034183146444241, -0.8253005448121442},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.39501469623720326, -0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.5636542595046758, -0.6362341359454359},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.6995362860096079, -0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.7947638062826026, -0.3014141539861553},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["9",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.8438025429833459, -0.1024561782170246},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.8438025429833459, 0.1024561782170246},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.7947638062826026, 0.3014141539861553},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.6995362860096079, 0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.5636542595046758, 0.6362341359454359},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.39501469623720326, 0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.2034183146444241, 0.8253005448121442},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["8",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0., 0.85}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->40], {0, 0}]}]], "Output",
+ CellChangeTimes->{{3.9657568122478523`*^9, 3.9657568272508774`*^9}, {
+   3.9657671644795017`*^9, 3.965767200446001*^9}, 3.9657676031192036`*^9, 
+   3.96576763425963*^9, {3.965767756327759*^9, 3.9657678302469845`*^9}, {
+   3.965767896100361*^9, 3.965767919708168*^9}, 3.9657679852008457`*^9, {
+   3.96576803629158*^9, 3.9657680604103107`*^9}, 3.9657682791529884`*^9},
+ CellLabel->
+  "Out[193]=",ExpressionUUID->"19f37722-1cdd-0541-9fe7-d3bbbf951815"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"illustrate", "[", "12", "]"}]], "Input",
+ CellChangeTimes->{{3.9657676548901176`*^9, 3.965767668738138*^9}},
+ CellLabel->
+  "In[194]:=",ExpressionUUID->"879bef2f-7d23-a142-8eb8-2574f1da7562"],
+
+Cell[BoxData[
+ GraphicsBox[{CircleBox[{0, 0}], CircleBox[{0, 0}, 0.8], 
+   CircleBox[{0, 0}, 0.6], 
+   LineBox[NCache[{{0.07232200815319384, 0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, 0.5956253244588323}, {0.12053668025532306`, 
+     0.992708874098054}}]], 
+   LineBox[NCache[{{0.21276293222552137`, 0.5610097456112488}, {
+      Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}}, {{
+     0.21276293222552137`, 0.5610097456112488}, {0.3546048870425356, 
+     0.9350162426854148}}]], 
+   LineBox[NCache[{{0.34083884803869346`, 0.4937903195361938}, {
+      Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}}, {{
+     0.34083884803869346`, 0.4937903195361938}, {0.5680647467311558, 
+     0.8229838658936564}}]], 
+   LineBox[NCache[{{0.44910644890266066`, 0.3978735949444771}, {
+      Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}}, {{
+     0.44910644890266066`, 0.3978735949444771}, {0.7485107481711011, 
+     0.6631226582407952}}]], 
+   LineBox[NCache[{{0.531273615391926, 0.2788339032262611}, {
+      Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}}, {{0.531273615391926,
+      0.2788339032262611}, {0.8854560256532099, 0.46472317204376856`}}]], 
+   LineBox[NCache[{{0.5825650904556312, 0.14358939857253467`}, {
+      Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}}, {{
+     0.5825650904556312, 0.14358939857253467`}, {0.970941817426052, 
+     0.23931566428755777`}}]], LineBox[{{0.6, 0.}, {1, 0}}], 
+   LineBox[NCache[{{0.5825650904556312, -0.14358939857253467`}, {
+      Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}}, {{
+     0.5825650904556312, -0.14358939857253467`}, {
+     0.970941817426052, -0.23931566428755777`}}]], 
+   LineBox[NCache[{{0.531273615391926, -0.2788339032262611}, {
+      Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}}, {{
+     0.531273615391926, -0.2788339032262611}, {
+     0.8854560256532099, -0.46472317204376856`}}]], 
+   LineBox[NCache[{{0.44910644890266066`, -0.3978735949444771}, {
+      Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}}, {{
+     0.44910644890266066`, -0.3978735949444771}, {
+     0.7485107481711011, -0.6631226582407952}}]], 
+   LineBox[NCache[{{0.34083884803869346`, -0.4937903195361938}, {
+      Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}}, {{
+     0.34083884803869346`, -0.4937903195361938}, {
+     0.5680647467311558, -0.8229838658936564}}]], 
+   LineBox[NCache[{{0.21276293222552137`, -0.5610097456112488}, {
+      Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}}, {{
+     0.21276293222552137`, -0.5610097456112488}, {
+     0.3546048870425356, -0.9350162426854148}}]], 
+   LineBox[NCache[{{0.07232200815319384, -0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, -0.5956253244588323}, {
+     0.12053668025532306`, -0.992708874098054}}]], 
+   LineBox[NCache[{{-0.07232200815319384, -0.5956253244588323}, {-
+       Sin[Rational[1, 26] Pi], -
+       Cos[Rational[1, 26] 
+         Pi]}}, {{-0.07232200815319384, -0.5956253244588323}, \
+{-0.12053668025532306`, -0.992708874098054}}]], 
+   LineBox[NCache[{{-0.21276293222552137`, -0.5610097456112488}, {-
+       Sin[Rational[3, 26] Pi], -
+       Cos[Rational[3, 26] 
+         Pi]}}, {{-0.21276293222552137`, -0.5610097456112488}, \
+{-0.3546048870425356, -0.9350162426854148}}]], 
+   LineBox[NCache[{{-0.34083884803869346`, -0.4937903195361938}, {-
+       Sin[Rational[5, 26] Pi], -
+       Cos[Rational[5, 26] 
+         Pi]}}, {{-0.34083884803869346`, -0.4937903195361938}, \
+{-0.5680647467311558, -0.8229838658936564}}]], 
+   LineBox[NCache[{{-0.44910644890266066`, -0.3978735949444771}, {-
+       Cos[Rational[3, 13] Pi], -
+       Sin[Rational[3, 13] 
+         Pi]}}, {{-0.44910644890266066`, -0.3978735949444771}, \
+{-0.7485107481711011, -0.6631226582407952}}]], 
+   LineBox[NCache[{{-0.531273615391926, -0.2788339032262611}, {-
+       Cos[Rational[2, 13] Pi], -
+       Sin[Rational[2, 13] 
+         Pi]}}, {{-0.531273615391926, -0.2788339032262611}, \
+{-0.8854560256532099, -0.46472317204376856`}}]], 
+   LineBox[NCache[{{-0.5825650904556312, -0.14358939857253467`}, {-
+       Cos[Rational[1, 13] Pi], -
+       Sin[Rational[1, 13] 
+         Pi]}}, {{-0.5825650904556312, -0.14358939857253467`}, \
+{-0.970941817426052, -0.23931566428755777`}}]], 
+   LineBox[{{-0.6, 0.}, {-1, 0}}], 
+   LineBox[NCache[{{-0.5825650904556312, 
+      0.14358939857253467`}, {-Cos[Rational[1, 13] Pi], Sin[
+       Rational[1, 13] Pi]}}, {{-0.5825650904556312, 
+     0.14358939857253467`}, {-0.970941817426052, 0.23931566428755777`}}]], 
+   LineBox[NCache[{{-0.531273615391926, 
+      0.2788339032262611}, {-Cos[Rational[2, 13] Pi], Sin[
+       Rational[2, 13] Pi]}}, {{-0.531273615391926, 
+     0.2788339032262611}, {-0.8854560256532099, 0.46472317204376856`}}]], 
+   LineBox[NCache[{{-0.44910644890266066`, 
+      0.3978735949444771}, {-Cos[Rational[3, 13] Pi], Sin[
+       Rational[3, 13] Pi]}}, {{-0.44910644890266066`, 
+     0.3978735949444771}, {-0.7485107481711011, 0.6631226582407952}}]], 
+   LineBox[NCache[{{-0.34083884803869346`, 
+      0.4937903195361938}, {-Sin[Rational[5, 26] Pi], Cos[
+       Rational[5, 26] Pi]}}, {{-0.34083884803869346`, 
+     0.4937903195361938}, {-0.5680647467311558, 0.8229838658936564}}]], 
+   LineBox[NCache[{{-0.21276293222552137`, 
+      0.5610097456112488}, {-Sin[Rational[3, 26] Pi], Cos[
+       Rational[3, 26] Pi]}}, {{-0.21276293222552137`, 
+     0.5610097456112488}, {-0.3546048870425356, 0.9350162426854148}}]], 
+   LineBox[NCache[{{-0.07232200815319384, 
+      0.5956253244588323}, {-Sin[Rational[1, 26] Pi], Cos[
+       Rational[1, 26] Pi]}}, {{-0.07232200815319384, 
+     0.5956253244588323}, {-0.12053668025532306`, 0.992708874098054}}]], 
+   LineBox[NCache[{{0.07232200815319384, 0.5956253244588323}, {
+      Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}}, {{
+     0.07232200815319384, 0.5956253244588323}, {0.12053668025532306`, 
+     0.992708874098054}}]], InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.17948674821566832, 0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.3485423790328264, 0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.4973419936805964, 0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"Q\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6172378994202423, 0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"R\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7012621820140611, 0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7445316555735405, 0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["\<\"T\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7445316555735405, -0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["\<\"U\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.7012621820140611, -0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.6172378994202423, -0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.4973419936805964, -0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"X\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.3485423790328264, -0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0.17948674821566832, -0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["\<\"Z\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0., -0.75}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.17948674821566832, -0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.3485423790328264, -0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.4973419936805964, -0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"D\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6172378994202423, -0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"E\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7012621820140611, -0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7445316555735405, -0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["\<\"G\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7445316555735405, 0.0904025101914923}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.7012621820140611, 0.26595366528190173}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.6172378994202423, 0.4260485600483669}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"J\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.4973419936805964, 0.5613830611283258}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.3485423790328264, 0.6640920192399075}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"L\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {-0.17948674821566832, 0.728206363069539}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->GrayLevel[0]], {0., 0.75}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.15555518178691255, 0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.3020700618284496, 0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.4310297278565169, 0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["14",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.5349395128308766, 0.36924208537525127},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6077605577455196, 0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6452607681637351, 0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6452607681637351, -0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.6077605577455196, -0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.5349395128308766, -0.36924208537525127},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.4310297278565169, -0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.3020700618284496, -0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["5",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0.15555518178691255, -0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0., -0.65}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.15555518178691255, -0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.3020700618284496, -0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.4310297278565169, -0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["5",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.5349395128308766, -0.36924208537525127},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6077605577455196, -0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6452607681637351, -0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6452607681637351, 0.07834884216596},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.6077605577455196, 0.23049317657764817},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.5349395128308766, 0.36924208537525127},
+     NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.4310297278565169, 0.4865319863112157},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.3020700618284496, 0.5755464166745865},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {-0.15555518178691255, 0.6311121813269338},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["5",
+     StripOnInput->False,
+     FontSize->12,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0.35, 0]], {0., 0.65}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["\<\"B\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.22734988107317985, 0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"C\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.4414870134415801, 0.8411832243705494}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"D\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.6299665253287554, 0.711085210762546}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"E\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.7818346725989735, 0.539661509394598}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"F\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.888265430551144, 0.33687464269040884}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"G\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.9430734303931513, 0.1145098462425569}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["\<\"H\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.9430734303931513, -0.1145098462425569},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["\<\"I\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.888265430551144, -0.33687464269040884},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"J\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.7818346725989735, -0.539661509394598}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"K\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.6299665253287554, -0.711085210762546}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"L\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.4414870134415801, -0.8411832243705494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0.22734988107317985, -0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["\<\"N\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0., -0.95}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["\<\"O\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.22734988107317985, -0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["\<\"P\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.4414870134415801, -0.8411832243705494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["\<\"Q\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.6299665253287554, -0.711085210762546},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["\<\"R\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.7818346725989735, -0.539661509394598},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["\<\"S\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.888265430551144, -0.33687464269040884},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["\<\"T\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.9430734303931513, -0.1145098462425569},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["\<\"U\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.9430734303931513, 0.1145098462425569},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["\<\"V\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.888265430551144, 0.33687464269040884},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["\<\"W\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.7818346725989735, 0.539661509394598}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["\<\"X\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.6299665253287554, 0.711085210762546}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["\<\"Y\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.4414870134415801, 0.8411832243705494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["\<\"Z\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {-0.22734988107317985, 0.9223947265547494},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["\<\"A\"\>",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[1, 0, 0]], {0., 0.95}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.2034183146444241, 0.8253005448121442}, 
+    NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], -Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, -0.23931566428755777`}]], InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.39501469623720326, 0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], -Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.5636542595046758, 0.6362341359454359}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], -Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, -0.6631226582407952}]], InsetBox[
+    StyleBox["13",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.6995362860096079, 0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], -Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, -0.8229838658936564}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.7947638062826026, 0.3014141539861553}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], -Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, -0.9350162426854148}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.8438025429833459, 0.1024561782170246}, 
+    NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], -Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, -0.992708874098054}]], InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.8438025429833459, -0.1024561782170246},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], -
+      Cos[Rational[1, 26] Pi]}, {-0.12053668025532306`, -0.992708874098054}]],
+    InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.7947638062826026, -0.3014141539861553},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], -
+      Cos[Rational[3, 26] Pi]}, {-0.3546048870425356, -0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.6995362860096079, -0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], -
+      Cos[Rational[5, 26] Pi]}, {-0.5680647467311558, -0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.5636542595046758, -0.6362341359454359},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], -
+      Sin[Rational[3, 13] Pi]}, {-0.7485107481711011, -0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["4",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.39501469623720326, -0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], -
+      Sin[Rational[2, 13] 
+        Pi]}, {-0.8854560256532099, -0.46472317204376856`}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0.2034183146444241, -0.8253005448121442},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], -
+      Sin[Rational[1, 13] Pi]}, {-0.970941817426052, -0.23931566428755777`}]],
+    InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0., -0.85}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {-1, 0}], InsetBox[
+    StyleBox["7",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.2034183146444241, -0.8253005448121442},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[1, 13] Pi], Sin[
+      Rational[1, 13] Pi]}, {-0.970941817426052, 0.23931566428755777`}]], 
+   InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.39501469623720326, -0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[2, 13] Pi], Sin[
+      Rational[2, 13] Pi]}, {-0.8854560256532099, 0.46472317204376856`}]], 
+   InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.5636542595046758, -0.6362341359454359},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Cos[Rational[3, 13] Pi], Sin[
+      Rational[3, 13] Pi]}, {-0.7485107481711011, 0.6631226582407952}]], 
+   InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.6995362860096079, -0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[5, 26] Pi], Cos[
+      Rational[5, 26] Pi]}, {-0.5680647467311558, 0.8229838658936564}]], 
+   InsetBox[
+    StyleBox["6",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.7947638062826026, -0.3014141539861553},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[3, 26] Pi], Cos[
+      Rational[3, 26] Pi]}, {-0.3546048870425356, 0.9350162426854148}]], 
+   InsetBox[
+    StyleBox["9",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.8438025429833459, -0.1024561782170246},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{-Sin[Rational[1, 26] Pi], Cos[
+      Rational[1, 26] Pi]}, {-0.12053668025532306`, 0.992708874098054}]], 
+   InsetBox[
+    StyleBox["3",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.8438025429833459, 0.1024561782170246},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[1, 26] Pi], Cos[Rational[1, 26] Pi]}, {
+     0.12053668025532306`, 0.992708874098054}]], InsetBox[
+    StyleBox["1",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.7947638062826026, 0.3014141539861553},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[3, 26] Pi], Cos[Rational[3, 26] Pi]}, {
+     0.3546048870425356, 0.9350162426854148}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.6995362860096079, 0.48285503472148245},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Sin[Rational[5, 26] Pi], Cos[Rational[5, 26] Pi]}, {
+     0.5680647467311558, 0.8229838658936564}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.5636542595046758, 0.6362341359454359},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[3, 13] Pi], Sin[Rational[3, 13] Pi]}, {
+     0.7485107481711011, 0.6631226582407952}]], InsetBox[
+    StyleBox["2",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.39501469623720326, 0.7526376218052284},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[2, 13] Pi], Sin[Rational[2, 13] Pi]}, {
+     0.8854560256532099, 0.46472317204376856`}]], InsetBox[
+    StyleBox["0",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {-0.2034183146444241, 0.8253005448121442},
+     NCache[ImageScaled[{Rational[1, 2], Rational[1, 2]}], 
+     ImageScaled[{0.5, 0.5}]], Automatic, 
+    NCache[{Cos[Rational[1, 13] Pi], Sin[Rational[1, 13] Pi]}, {
+     0.970941817426052, 0.23931566428755777`}]], InsetBox[
+    StyleBox["8",
+     StripOnInput->False,
+     FontSize->14,
+     FontWeight->"Bold",
+     FontColor->RGBColor[0, 0, 1]], {0., 0.85}, NCache[
+    ImageScaled[{Rational[1, 2], Rational[1, 2]}], ImageScaled[{0.5, 0.5}]], 
+    Automatic, {1, 0}], InsetBox[
+    StyleBox["\<\"M\"\>",
+     StripOnInput->False,
+     FontSize->40], {0, 0}]}]], "Output",
+ CellChangeTimes->{{3.965767660179785*^9, 3.96576766931686*^9}, 
+   3.965768291246767*^9},
+ CellLabel->
+  "Out[194]=",ExpressionUUID->"6db30108-f01a-8641-b158-04acd2086011"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"stdCounts", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+   "8", ",", "1", ",", "3", ",", "4", ",", "13", ",", "2", ",", "2", ",", "6",
+     ",", "7", ",", "0", ",", "1", ",", "4", ",", "2", ",", "7", ",", "7", ",",
+     "2", ",", "0", ",", "6", ",", "6", ",", "9", ",", "3", ",", "1", ",", 
+    "2", ",", "0", ",", "2", ",", " ", "0"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.96575545574794*^9, 3.965755485201668*^9}, {
+  3.965755938428091*^9, 3.9657559431993904`*^9}, {3.96575610892004*^9, 
+  3.965756113326042*^9}},
+ CellLabel->
+  "In[123]:=",ExpressionUUID->"c8a69531-d887-2d4d-a821-5fe3748d1957"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "8", ",", "1", ",", "3", ",", "4", ",", "13", ",", "2", ",", "2", ",", "6", 
+   ",", "7", ",", "0", ",", "1", ",", "4", ",", "2", ",", "7", ",", "7", ",", 
+   "2", ",", "0", ",", "6", ",", "6", ",", "9", ",", "3", ",", "1", ",", "2", 
+   ",", "0", ",", "2", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.9657561139306545`*^9},
+ CellLabel->
+  "Out[123]=",ExpressionUUID->"5d622b04-3c50-0a4d-915d-9fb6d6526df4"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", " ", "8", ",", "1", ",", "3", ",", "4", ",", "13", ",", "2", ",", 
+   "2", ",", "6", ",", "7", ",", "0", ",", "1", ",", "4", ",", "2", ",", "7", 
+   ",", "7", ",", "2", ",", "0", ",", "6", ",", "6", ",", "9", ",", "3", ",", 
+   "1", ",", "2", ",", "0", ",", "2"}], "}"}]], "Input",
+ CellChangeTimes->{{3.9657561031411495`*^9, 
+  3.96575610511265*^9}},ExpressionUUID->"16a1ee1d-0a6d-0a41-9974-\
+c4545eed95c3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"codedCounts", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+   "4", ",", "2", ",", "0", ",", "5", ",", "4", ",", "7", ",", "3", ",", "3", 
+    ",", "3", ",", "0", ",", "1", ",", "0", ",", "5", ",", "4", ",", "0", ",",
+     "1", ",", "14", ",", "0", ",", "0", ",", "7", ",", "6", ",", "0", ",", 
+    "0", ",", "3", ",", "5", ",", "3"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.9657566735566235`*^9, 3.965756678376402*^9}},
+ CellLabel->
+  "In[149]:=",ExpressionUUID->"3d590b86-5473-3846-bc09-c41621dff60c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "4", ",", "2", ",", "0", ",", "5", ",", "4", ",", "7", ",", "3", ",", "3", ",",
+    "3", ",", "0", ",", "1", ",", "0", ",", "5", ",", "4", ",", "0", ",", "1",
+    ",", "14", ",", "0", ",", "0", ",", "7", ",", "6", ",", "0", ",", "0", ",",
+    "3", ",", "5", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.965756681165251*^9},
+ CellLabel->
+  "Out[149]=",ExpressionUUID->"7da2f77b-da4b-d544-9a89-2765a2b79ffe"]
+}, Open  ]]
+},
+WindowSize->{619.5, 564.5},
+WindowMargins->{{Automatic, 316.5}, {Automatic, 133}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"5daf14ca-70fb-914a-a146-84096ab89ded"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 786, 21, 44, "Input",ExpressionUUID->"72b45880-54ca-bc49-b4f6-34315d4792e1",
+ InitializationCell->True],
+Cell[1343, 43, 1432, 37, 101, "Input",ExpressionUUID->"da9c97d4-b1dd-8d47-a54e-a855e655e638",
+ InitializationCell->True],
+Cell[2778, 82, 687, 16, 44, "Input",ExpressionUUID->"2490a11d-6437-5645-9be1-3d1d2cdd8ca9",
+ InitializationCell->True],
+Cell[3468, 100, 2402, 57, 120, "Input",ExpressionUUID->"d7586eb7-6781-8a49-9ec1-87483b75bf5f",
+ InitializationCell->True],
+Cell[5873, 159, 1468, 32, 120, "Input",ExpressionUUID->"f4a21f95-8124-524c-baa8-6355b2f44aad",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[7366, 195, 259, 5, 28, "Input",ExpressionUUID->"0b70edd4-4183-7648-b660-f6b7d3ab837c"],
+Cell[7628, 202, 26679, 599, 376, "Output",ExpressionUUID->"45534f66-e8f2-414c-add6-8e1b49163bbd"]
+}, Open  ]],
+Cell[34322, 804, 2273, 46, 196, "Input",ExpressionUUID->"2054f860-f727-9c49-a4fc-0efaf076399b",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[36620, 854, 357, 6, 28, "Input",ExpressionUUID->"34463e6a-3bfd-fb40-9aea-00dc800b080d"],
+Cell[36980, 862, 47194, 1088, 376, "Output",ExpressionUUID->"19f37722-1cdd-0541-9fe7-d3bbbf951815"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[84211, 1955, 215, 4, 28, "Input",ExpressionUUID->"879bef2f-7d23-a142-8eb8-2574f1da7562"],
+Cell[84429, 1961, 46917, 1085, 376, "Output",ExpressionUUID->"6db30108-f01a-8641-b158-04acd2086011"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[131383, 3051, 626, 12, 47, "Input",ExpressionUUID->"c8a69531-d887-2d4d-a821-5fe3748d1957"],
+Cell[132012, 3065, 456, 9, 32, "Output",ExpressionUUID->"5d622b04-3c50-0a4d-915d-9fb6d6526df4"]
+}, Open  ]],
+Cell[132483, 3077, 460, 9, 28, "Input",ExpressionUUID->"16a1ee1d-0a6d-0a41-9974-c4545eed95c3"],
+Cell[CellGroupData[{
+Cell[132968, 3090, 527, 10, 47, "Input",ExpressionUUID->"3d590b86-5473-3846-bc09-c41621dff60c"],
+Cell[133498, 3102, 454, 9, 32, "Output",ExpressionUUID->"7da2f77b-da4b-d544-9a89-2765a2b79ffe"]
+}, Open  ]]
+}
+]
+*)
+
